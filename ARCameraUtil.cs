@@ -14,14 +14,13 @@ public class ARCameraUtil : MonoBehaviour {
 			new Vector2(0f, 1f),
 			new Vector2(1f, 1f)
 		};
+		int[] triangles = new int[6]{0, 3, 1, 0, 2, 3};
 
 		for (int i = 0; i < 4; i++) {
 			vertices [i] = camera.ViewportPointToRay (new Vector3 (uv[i].x, uv[i].y, 0f)).direction;
 			vertices [i] = Quaternion.Inverse (camera.transform.rotation) * vertices [i];
 			vertices [i] = vertices [i] * (1f / vertices [i].z) * distance;
 		}
-
-		int[] triangles = new int[6]{0, 3, 1, 0, 2, 3};
 
 		mesh.vertices = vertices;
 		mesh.uv = uv;
