@@ -17,7 +17,7 @@ public class ARCameraUtil : MonoBehaviour {
 
 		for (int i = 0; i < 4; i++) {
 			vertices [i] = camera.ViewportPointToRay (new Vector3 (uv[i].x, uv[i].y, 0f)).direction;
-			vertices [i] = Quaternion.Inverse (camera.transform.rotation) * vertices [i];
+			vertices [i] = Quaternion.Inverse (camera.transform.rotation) *  * (vertices [i] - camera.transform.position);
 			vertices [i] = vertices [i] * (1f / vertices [i].z) * distance;
 		}
 
